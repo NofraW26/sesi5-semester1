@@ -22,6 +22,41 @@ function SignIn() {
   containerSignIn.style.display = "block";
 }
 
+// sign-up
+function Register() {
+  let UsernameSignUp = document.getElementById("UsernameSignUp");
+  let passwordSignUp = document.getElementById("passwordSignUp");
+  let repeatPasswordSignUp = document.getElementById("repeatPasswordSignUp");
+  let inputNewUsername = document.getElementById("inputNewUsername");
+  let inputNewPassword = document.getElementById("inputNewPassword");
+
+  if (passwordSignUp.value == repeatPasswordSignUp.value) {
+    if (UsernameSignUp.value && passwordSignUp.value) {
+      alert("Akun Berhasil Dibuat");
+      inputNewUsername.textContent = UsernameSignUp.value;
+      inputNewPassword.textContent = passwordSignUp.value;
+      textUsername.style.display = "block";
+      textPassword.style.display = "block";
+      localStorage.setItem("newAccount", inputNewUsername.textContent);
+      localStorage.setItem("newPassword", inputNewPassword.textContent);
+      location.reload();
+      return;
+    }
+  }
+  if (UsernameSignUp.value == "" || passwordSignUp.value == "" || repeatPasswordSignUp.value == "") {
+    alert("Tolong Masukan Nama Dan Passwordnya Cuy");
+  } else if (passwordSignUp.value !== repeatPasswordSignUp.value) {
+    alert("Lihat Lagi Passwordnya Cuy");
+  }
+}
+
+if (localStorage.getItem("newAccount")) {
+  inputNewUsername.textContent = localStorage.getItem("newAccount");
+  inputNewPassword.textContent = localStorage.getItem("newPassword");
+  textUsername.style.display = "block";
+  textPassword.style.display = "block";
+}
+
 // Sign-In
 function buttonSubmit() {
   let listAkun = document.getElementById("listAkun");
@@ -57,7 +92,7 @@ function buttonSubmit() {
     showContent.textContent = "Anda Masuk Sebagai Akun Basic2";
     showContent.style.display = "block";
   } else if (UsernameSignIn.value == "" || passwordSignIn.value == "") {
-    alert("Tolong Nama Dan Passwordnya Cuy");
+    alert("Tolong Masukan Nama Dan Passwordnya Cuy");
   } else {
     alert("Error Cuy");
   }
