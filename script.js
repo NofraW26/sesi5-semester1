@@ -6,7 +6,7 @@ let textUsername = document.getElementById("textUsername");
 let textPassword = document.getElementById("textPassword");
 let showContent = document.getElementById("showContent");
 
-header.textContent = "Created Account";
+header.textContent = "Created Account :";
 buttonLogout.style.display = "none";
 containerSignUp.style.display = "none";
 textUsername.style.display = "none";
@@ -21,7 +21,9 @@ function SignIn() {
   containerSignUp.style.display = "none";
   containerSignIn.style.display = "block";
 }
-
+function termscheck() {
+  terms.checked = true;
+}
 // sign-up
 function Register() {
   let UsernameSignUp = document.getElementById("UsernameSignUp");
@@ -31,8 +33,8 @@ function Register() {
   let inputNewPassword = document.getElementById("inputNewPassword");
 
   if (passwordSignUp.value == repeatPasswordSignUp.value) {
-    if (UsernameSignUp.value && passwordSignUp.value) {
-      alert("Akun Berhasil Dibuat");
+    if (UsernameSignUp.value && passwordSignUp.value && terms.checked == true) {
+      alert("Akun Berhasil Dibuat, Silahkan Login");
       inputNewUsername.textContent = UsernameSignUp.value;
       inputNewPassword.textContent = passwordSignUp.value;
       textUsername.style.display = "block";
@@ -47,6 +49,8 @@ function Register() {
     alert("Tolong Masukan Nama Dan Passwordnya Cuy");
   } else if (passwordSignUp.value !== repeatPasswordSignUp.value) {
     alert("Lihat Lagi Passwordnya Cuy");
+  } else if (terms.checked == false) {
+    alert("Udah Ceklis Cuy?");
   }
 }
 
@@ -91,6 +95,15 @@ function buttonSubmit() {
     containerSignUp.style.display = "none";
     showContent.textContent = "Anda Masuk Sebagai Akun Basic2";
     showContent.style.display = "block";
+  } else if (UsernameSignIn.value == localStorage.getItem("newAccount") && passwordSignIn.value == localStorage.getItem("newPassword")) {
+    localStorage.setItem("role", "your");
+    buttonLogout.style.display = "block";
+    header.textContent = "Your's Account";
+    listAkun.style.display = "none";
+    containerSignIn.style.display = "none";
+    containerSignUp.style.display = "none";
+    showContent.textContent = "Terima Kasih Telah Membuat Akun Baru";
+    showContent.style.display = "block";
   } else if (UsernameSignIn.value == "" || passwordSignIn.value == "") {
     alert("Tolong Masukan Nama Dan Passwordnya Cuy");
   } else {
@@ -106,6 +119,10 @@ if (localStorage.getItem("username")) {
   if (localStorage.getItem("role") == "admin") {
     header.textContent = "Admin's Account";
     showContent.textContent = '"Anda Masuk Sebagai Akun Admin"';
+    showContent.style.display = "block";
+  } else if (localStorage.getItem("role") == "your") {
+    header.textContent = "Your's Account";
+    showContent.textContent = '"Terima Kasih Telah Membuat Akun Baru"';
     showContent.style.display = "block";
   } else if (localStorage.getItem("role") == "basic") {
     header.textContent = "Basic's Account";
