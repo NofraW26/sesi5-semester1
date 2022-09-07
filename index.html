@@ -13,24 +13,56 @@
     <!-- navbar -->
     <section class="bg-dark">
       <div class="container-fluid text-white text-center" style="background-color: #1a1a1a">
-        <h2>Created Account</h2>
-        <div>
+        <button
+          id="buttonLogout"
+          onclick="logout()"
+          type="button"
+          class="py-2 px-3 text-xs font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        >
+          Logout
+        </button>
+        <h2 id="header" class="pb-0 mb-0"></h2>
+        <div id="listAkun">
           <ul class="row pb-0 mb-0">
-            <li class="col-12 col-sm-6 pt-3">
-              <p>Username : AkunAdmin</p>
-              <p>Password : Admin</p>
+            <li class="col-12 col-sm-6 pt-4">
+              <div class="d-flex justify-content-center align-items-center">
+                <p style="padding-right: 10px">Username :</p>
+                <p>AkunAdmin</p>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <p style="padding-right: 10px">Password :</p>
+                <p>Admin</p>
+              </div>
             </li>
-            <li class="col-12 col-sm-6 pt-3">
-              <p>Username : AkunBasic1</p>
-              <p>Password : Basic1</p>
+            <li class="col-12 col-sm-6 pt-4">
+              <div class="d-flex justify-content-center align-items-center">
+                <p style="padding-right: 10px">Username :</p>
+                <p>AkunBasic1</p>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <p style="padding-right: 10px">Password :</p>
+                <p>Basic1</p>
+              </div>
             </li>
-            <li class="col-12 col-sm-6 pt-3">
-              <p>Username : AkunBasic2</p>
-              <p>Password : Basic2</p>
+            <li class="col-12 col-sm-6 pt-4">
+              <div class="d-flex justify-content-center align-items-center">
+                <p style="padding-right: 10px">Username :</p>
+                <p>AkunBasic2</p>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <p style="padding-right: 10px">Password :</p>
+                <p>Basic2</p>
+              </div>
             </li>
-            <li class="col-12 col-sm-6 pt-3">
-              <p></p>
-              <p></p>
+            <li class="col-12 col-sm-6 pt-4">
+              <div class="d-flex justify-content-center align-items-center">
+                <p id="textUsername" style="padding-right: 10px">Username :</p>
+                <p id="inputNewUsername"></p>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <p id="textPassword" style="padding-right: 10px">Password :</p>
+                <p id="inputNewPassword"></p>
+              </div>
             </li>
           </ul>
         </div>
@@ -47,42 +79,47 @@
     <!-- content -->
     <section class="bg-dark pb-5" style="height: 63vh">
       <!-- signin -->
-      <!-- <div class="container">
-        <form>
-          <div class="mb-6">
-            <div class="text-end">
-              <button id="btnSignUp" onclick="SignUp()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Sign-Up</button>
-            </div>
-            <label for="email" class="block mb-2 text-sm fs-5 font-semibold text-primary">Username :</label>
-            <input
-              type="text"
-              id="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Username"
-              required=""
-            />
+      <div id="containerSignIn" class="container">
+        <div class="mb-6">
+          <div class="text-end">
+            <button
+              id="btnSignUp"
+              onclick="SignUp()"
+              type="button"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Sign-Up
+            </button>
           </div>
-          <div class="mb-6">
-            <label for="password" class="block mb-2 text-sm fs-5 font-semibold text-primary">Password :</label>
-            <input
-              type="password"
-              id="password"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required=""
-            />
-          </div>
-          <button
-            type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Submit
-          </button>
-        </form>
-      </div> -->
+          <label for="UsernameSignIn" class="block mb-2 text-sm fs-5 font-semibold text-primary">Username :</label>
+          <input
+            type="text"
+            id="UsernameSignIn"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Username"
+            required=""
+          />
+        </div>
+        <div class="mb-6">
+          <label for="passwordSignIn" class="block mb-2 text-sm fs-5 font-semibold text-primary">Password :</label>
+          <input
+            type="password"
+            id="passwordSignIn"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required=""
+          />
+        </div>
+        <button
+          onclick="buttonSubmit()"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Submit
+        </button>
+      </div>
 
       <!-- sign-up -->
 
-      <div class="container">
+      <div id="containerSignUp" class="container">
         <form>
           <div class="mb-6">
             <div class="text-end">
@@ -95,7 +132,7 @@
                 Sign-in
               </button>
             </div>
-            <label for="email" class="block mb-2 text-sm font-medium text-primary dark:text-gray-300">Username</label>
+            <label for="email" class="block mb-2 text-sm fs-5 font-semibold text-primary">Username :</label>
             <input
               type="text"
               id="email"
@@ -105,7 +142,7 @@
             />
           </div>
           <div class="mb-6">
-            <label for="password" class="block mb-2 text-sm font-medium text-primary dark:text-gray-300">Password</label>
+            <label for="password" class="block mb-2 text-sm fs-5 font-semibold text-primary">Password :</label>
             <input
               type="password"
               id="password"
@@ -114,7 +151,7 @@
             />
           </div>
           <div class="mb-6">
-            <label for="repeat-password" class="block mb-2 text-sm font-medium text-primary dark:text-gray-300">Repeat password</label>
+            <label for="repeat-password" class="block mb-2 text-sm fs-5 font-semibold text-primary">Repeat password :</label>
             <input
               type="password"
               id="repeat-password"
@@ -142,6 +179,8 @@
           </button>
         </form>
       </div>
+
+      <h1 id="showContent" class="text-white text-center"></h1>
     </section>
 
     <!-- footer -->
@@ -150,5 +189,6 @@
     </footer>
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
